@@ -3,7 +3,7 @@ SS<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sharon ｜ AI 工作流與專案流程顧問 - From Chaos to Clarity, with AI.</title>
+    <title>Sharon ｜ AI 工作流與專案流程顧問 - 從混亂到清晰，AI 伴您前行。</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -142,6 +142,80 @@ SS<!DOCTYPE html>
         /* Global text color from palette */
         body { color: var(--text-charcoal); }
 
+        /* Hero background video styling */
+        .hero-bg-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            -o-object-fit: cover;
+            pointer-events: none;
+            z-index: 0;
+            filter: saturate(1.06) contrast(1.06) brightness(1.02);
+            -webkit-filter: saturate(1.06) contrast(1.06) brightness(1.02);
+            will-change: transform, filter;
+            transform: translateZ(0);
+        }
+
+        /* Improve hero foreground contrast over video */
+        #hero .hero-foreground {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Primary readable text (headings, paragraphs, large labels) */
+        #hero .hero-foreground h1,
+        #hero .hero-foreground h2,
+        #hero .hero-foreground h3,
+        #hero .hero-foreground .typewriter-cursor,
+        #hero .hero-foreground .text-lg,
+        #hero .hero-foreground .text-xl {
+            color: var(--text-charcoal) !important;
+            text-shadow: 0 4px 18px rgba(0,0,0,0.08) !important;
+        }
+        #hero .hero-foreground p {
+            color: #5f5f5f !important;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.08) !important;
+        }
+
+        /* Gradient text tuned for light hero with caramel accent */
+        .hero-gradient-text {
+            background-image: linear-gradient(90deg, rgba(28,28,26,0.98), rgba(191,161,129,1));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent !important;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Prominent hero CTA: light rounded button with strong contrast */
+        .hero-cta {
+            background: rgba(255,255,255,0.95) !important;
+            color: var(--text-charcoal) !important;
+            border: 1px solid rgba(27,31,35,0.06) !important;
+            box-shadow: 0 10px 30px -18px rgba(30,41,45,0.12);
+        }
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px -18px rgba(30,41,45,0.14);
+            background: rgba(255,255,255,1) !important;
+        }
+
+        /* Small badges or pills (keep dark on light pills for accessibility) */
+        #hero .hero-foreground .inline-flex,
+        #hero .hero-foreground .text-xs,
+        #hero .hero-foreground .tracking-wider {
+            color: var(--text-charcoal) !important;
+            text-shadow: none !important;
+        }
+
+        /* Keep CTA buttons readable: dark text on light button backgrounds */
+        #hero .hero-foreground a.group,
+        #hero .hero-foreground a.group *,
+        #hero .hero-foreground a.group span {
+            color: var(--text-charcoal) !important;
+        }
         /* Scroll Animation initial state */
         .reveal {
             opacity: 0;
@@ -153,6 +227,7 @@ SS<!DOCTYPE html>
             transform: translateY(0);
         }
     </style>
+        <!-- (removed SVG sharpen filter — using CSS filters to avoid rasterizing text) -->
 </head>
 <body class="bg-bgWarm text-slate-800 font-sans antialiased overflow-x-hidden">
 
@@ -164,7 +239,7 @@ SS<!DOCTYPE html>
                 <span class="text-xl font-bold tracking-tight text-brandPrimary group-hover:text-brandPurple transition-colors duration-300">
                     Sharon <span class="text-brandPurple">.</span>
                 </span>
-                <span class="text-[10px] tracking-wider text-brandSecondary uppercase font-medium">AI & Process Consultant</span>
+                <span class="text-[10px] tracking-wider text-brandSecondary uppercase font-medium">AI 與流程顧問</span>
             </a>
 
             <!-- Desktop Navigation -->
@@ -172,9 +247,10 @@ SS<!DOCTYPE html>
                 <a href="#hero" class="text-sm font-medium text-brandSecondary hover:text-brandBlue transition-colors duration-300">首頁</a>
                 <a href="#about" class="text-sm font-medium text-brandSecondary hover:text-brandBlue transition-colors duration-300">關於 Sharon</a>
                 <a href="#painpoints" class="text-sm font-medium text-brandSecondary hover:text-brandBlue transition-colors duration-300">我如何整理混亂</a>
-                <a href="#services" class="text-sm font-medium text-brandSecondary hover:text-brandBlue transition-colors duration-300">AI 工作流方案</a>
+                <a href="#services" class="text-sm font-medium text-brandSecondary hover:text-brandBlue transition-colors duration-300">服務方案</a>
                 <a href="#method" class="text-sm font-medium text-brandSecondary hover:text-brandBlue transition-colors duration-300">顧問方法</a>
-                <a href="#cases" class="text-sm font-medium text-brandSecondary hover:text-brandBlue transition-colors duration-300">合作案例</a>
+                <a href="#cases" class="text-sm font-medium text-brandSecondary hover:text-brandBlue transition-colors duration-300">案例成果</a>
+                <a href="#contact" class="text-sm font-medium text-brandSecondary hover:text-brandBlue transition-colors duration-300">聯絡我</a>
             </nav>
 
             <!-- CTA Header Button -->
@@ -186,7 +262,7 @@ SS<!DOCTYPE html>
             </div>
 
             <!-- Mobile Menu Toggle -->
-            <button class="lg:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none" id="mobile-menu-btn" aria-label="Toggle Menu">
+            <button class="lg:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none" id="mobile-menu-btn" aria-label="切換選單">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="hamburger-icon">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
@@ -199,9 +275,10 @@ SS<!DOCTYPE html>
                 <a href="#hero" class="mobile-nav-link text-base font-medium text-slate-700 hover:text-brandBlue">首頁</a>
                 <a href="#about" class="mobile-nav-link text-base font-medium text-slate-700 hover:text-brandBlue">關於 Sharon</a>
                 <a href="#painpoints" class="mobile-nav-link text-base font-medium text-slate-700 hover:text-brandBlue">我如何整理混亂</a>
-                <a href="#services" class="mobile-nav-link text-base font-medium text-slate-700 hover:text-brandBlue">AI 工作流方案</a>
+                <a href="#services" class="mobile-nav-link text-base font-medium text-slate-700 hover:text-brandBlue">服務方案</a>
                 <a href="#method" class="mobile-nav-link text-base font-medium text-slate-700 hover:text-brandBlue">顧問方法</a>
-                <a href="#cases" class="mobile-nav-link text-base font-medium text-slate-700 hover:text-brandBlue">合作案例</a>
+                <a href="#cases" class="mobile-nav-link text-base font-medium text-slate-700 hover:text-brandBlue">案例成果</a>
+                <a href="#contact" class="mobile-nav-link text-base font-medium text-slate-700 hover:text-brandBlue">聯絡我</a>
                 <hr class="border-stone-200 my-2">
                 <a href="https://calendar.app.google/Ys4YT7neYSiCaiVh9" target="_blank" class="w-full py-3 rounded-xl bg-brandBlue text-white font-medium text-center text-sm shadow-md hover:bg-slate-800 transition-colors">
                     預約一次流程健檢
@@ -212,6 +289,14 @@ SS<!DOCTYPE html>
 
     <!-- Hero Section -->
     <section id="hero" class="relative min-h-screen pt-32 pb-20 flex items-center overflow-hidden bg-gradient-to-b from-bgLavender via-bgWarm to-white">
+        <!-- Full-bleed Background Video (autoplay, muted, loop, playsinline) -->
+        <video class="hero-bg-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+            <source src="sharon_brand_background_10s_web.webm" type="video/webm">
+            <source src="sharon_brand_background_10s_compatible.mp4" type="video/mp4">
+        </video>
+        <!-- Subtle dark overlay for text contrast (reduced to 5%) -->
+        <div class="absolute inset-0 bg-black/5 pointer-events-none z-10" style="background-color: rgba(0,0,0,0.05);" aria-hidden="true"></div>
+
         <!-- Interactive Canvas Background -->
         <canvas id="bg-canvas" class="absolute inset-0 pointer-events-none z-0"></canvas>
         
@@ -220,7 +305,7 @@ SS<!DOCTYPE html>
         <div class="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] rounded-full bg-amber-100/25 blur-[120px] pointer-events-none z-0"></div>
         <div class="absolute top-1/3 right-1/3 w-[300px] h-[300px] rounded-full bg-stone-100/20 blur-[80px] pointer-events-none z-0"></div>
 
-        <div class="max-w-7xl mx-auto px-6 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch hero-foreground">
             <!-- Left Info Panel -->
             <div class="lg:col-span-7 flex flex-col space-y-6">
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-stone-200 shadow-sm self-start">
@@ -228,12 +313,12 @@ SS<!DOCTYPE html>
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brandGreen opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-brandGreen"></span>
                     </span>
-                    <span class="text-xs font-semibold tracking-wider text-slate-600 uppercase">From Chaos to Clarity, with AI.</span>
+                    <span class="text-xs font-semibold tracking-wider text-slate-600 uppercase">從混亂到清晰，與 AI 合作。</span>
                 </div>
 
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-brandPrimary leading-[1.15]">
+                <h1 class="text-4xl sm:text-5xl lg:text-[4.5rem] font-bold tracking-tight text-brandPrimary leading-[1.05]">
                     把混亂的工作，<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandBlue to-brandPurple glow-text-blue">
+                    <span class="hero-gradient-text glow-text-blue">
                         整理成團隊用得起來的 AI 流程。
                     </span>
                 </h1>
@@ -255,12 +340,12 @@ SS<!DOCTYPE html>
                         <span class="absolute inset-0 bg-gradient-to-r from-brandBlue/5 to-brandPurple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                         <span>預約一次流程健檢</span>
                         <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                        <span class="absolute bottom-1 right-2 text-[9px] text-brandGreen font-semibold tracking-wider uppercase scale-75 opacity-70 group-hover:opacity-100">Status: Ready</span>
+                        <span class="absolute bottom-1 right-2 text-[9px] text-brandGreen font-semibold tracking-wider uppercase scale-75 opacity-70 group-hover:opacity-100">狀態：準備就緒</span>
                     </a>
 
                     <!-- Secondary Button -->
-                    <a href="#services" class="group px-8 py-4 rounded-2xl font-semibold text-brandSecondary hover:text-brandPrimary border border-brandLight hover:border-brandLight bg-transparent hover:bg-mist transition-all duration-300 flex items-center justify-center gap-1.5">
-                        <span>查看 AI 工作流方案</span>
+                    <a href="#services" class="group px-8 py-4 rounded-2xl font-semibold text-brandSecondary hover:text-brandPrimary border border-brandLight hover:border-brandLight bg-transparent hover:bg-mist transition-all duration-300 flex items-center justify-center gap-1.5 hero-cta">
+                        <span>查看服務方案</span>
                         <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </a>
                 </div>
@@ -271,8 +356,8 @@ SS<!DOCTYPE html>
                 <div class="relative w-full max-w-[360px] rounded-3xl glass-card border border-white/60 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.02)] p-6 flex flex-col justify-between overflow-hidden h-full">
                     <!-- Top subtle indicator -->
                     <div class="flex items-center justify-between">
-                        <span class="text-xs font-semibold text-stone-400 uppercase tracking-widest">Workflow Engine</span>
-                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-brandBlue/10 text-brandBlue">Active Blueprint</span>
+                        <span class="text-xs font-semibold text-stone-400 uppercase tracking-widest">流程引擎</span>
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-brandBlue/10 text-brandBlue">進行中藍圖</span>
                     </div>
 
                     <!-- Centered Custom Chaos to Clarity SVG Graph (Adjusted to new Palette) -->
@@ -326,97 +411,59 @@ SS<!DOCTYPE html>
                     </div>
 
                     <div class="space-y-3 pt-2">
-                        <p class="text-sm font-semibold text-brandPrimary">Your operations, aligned end to end.</p>
-                        <p class="text-xs text-brandSecondary">Build trusted workflows that turn fragmented data into decision-ready signals.</p>
+                        <p class="text-sm font-semibold text-brandPrimary">作業流程，端到端對齊。</p>
+                        <p class="text-xs text-brandSecondary">建立可信賴的工作流程，將零散資訊轉化為決策準備信號。</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-24 bg-bgIce relative overflow-hidden">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-amber-500/5 blur-[150px] pointer-events-none"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <!-- Header Group -->
-            <div class="max-w-3xl mx-auto text-center mb-16 reveal">
-                <span class="text-xs font-bold tracking-widest text-brandPurple uppercase block mb-3">Service Scope</span>
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">
-                    我協助你把 AI 變成真正用得起來的工作方法。
-                </h2>
-                <p class="text-base md:text-lg text-stone-600">
-                    不只提供工具，而是為你的團隊打造一套可控、可複製、能穩定交付成果的工作系統。
-                </p>
-            </div>
-
-            <!-- Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Service Card 1 -->
-                <div class="p-8 rounded-[24px] glass-card border border-stone-200/50 hover:border-brandPurple/40 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between reveal">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-stone-100 text-brandBlue flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
-                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+    <!-- About Sharon Section -->
+    <section id="about" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Graphic (Professional Portrait) -->
+                <div class="lg:col-span-5 flex justify-center reveal">
+                    <div class="relative w-full max-w-[420px] aspect-[4/5] rounded-[32px] overflow-hidden bg-slate-950/5 shadow-2xl border border-white/15">
+                        <img src="sharon_pic.jpg" alt="Sharon 人像" class="h-full w-full object-cover object-center" />
+                        <div class="absolute inset-x-0 bottom-0 bg-slate-950/70 backdrop-blur-md px-6 py-4">
+                            <p class="text-sm font-semibold text-white">Sharon</p>
+                            <p class="text-xs text-slate-300 mt-1">數位專案顧問 · AI 與流程架構</p>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-4">需求釐清與網站架構規劃</h3>
-                        <p class="text-slate-600 leading-relaxed text-sm">
-                            把老闆、客戶與團隊腦中的想法，整理成清楚的頁面架構、功能規格、內容邏輯與執行路徑，降低反覆溝通與需求變動造成的專案耗損。
-                        </p>
-                    </div>
-                    <div class="mt-8 pt-4 border-t border-stone-200/60 flex items-center justify-between text-xs font-semibold text-stone-400">
-                        <span>ARCHITECT & SCOPING</span>
-                        <span class="text-brandPurple group-hover:translate-x-1 transition-transform">→</span>
                     </div>
                 </div>
 
-                <!-- Service Card 2 -->
-                <div class="p-8 rounded-[24px] glass-card border border-stone-200/50 hover:border-brandPurple/40 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between reveal">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-amber-50/50 text-brandPurple flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
-                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-4">AI 工作流設計與導入</h3>
-                        <p class="text-slate-600 leading-relaxed text-sm">
-                            從團隊日常任務出發，設計真正用得起來的 AI 提示詞、文件模板、協作流程與知識管理方法，讓 AI 成為工作的一部分，而不是額外負擔。
-                        </p>
-                    </div>
-                    <div class="mt-8 pt-4 border-t border-stone-200/60 flex items-center justify-between text-xs font-semibold text-stone-400">
-                        <span>AI CAPABILITY ENABLEMENT</span>
-                        <span class="text-brandPurple group-hover:translate-x-1 transition-transform">→</span>
-                    </div>
-                </div>
+                <!-- Right Copywriting Info -->
+                <div class="lg:col-span-7 flex flex-col space-y-6 reveal">
+                    <span class="text-xs font-bold tracking-widest text-brandPurple uppercase block">顧問介紹</span>
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 leading-snug">
+                        我不是只導入 AI，<br>而是協助團隊重新看懂自己的工作方式。
+                    </h2>
+                    
+                    <p class="text-base text-slate-600 leading-relaxed">
+                        我是 Sharon，一位結合網站專案管理、營運流程設計與 AI 工具應用的數位專案顧問。過去十多年，我長期協助企業釐清需求、規劃網站架構、管理跨部門專案，並將模糊的想法整理成可執行的流程與文件。
+                    </p>
+                    
+                    <p class="text-base text-slate-600 leading-relaxed">
+                        我擅長站在老闆、客戶、PM、設計、工程與營運之間，協助不同角色對齊目標、拆解任務、建立溝通機制。近年我將 AI 工具導入專案管理與營運流程中，協助團隊建立提示詞模板、文件產製流程、知識管理方法與 SOP，讓 AI 不只是提高效率的工具，而是能真正融入團隊日常的工作方法。
+                    </p>
 
-                <!-- Service Card 3 -->
-                <div class="p-8 rounded-[24px] glass-card border border-stone-200/50 hover:border-brandPurple/40 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between reveal">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-stone-100 text-brandGreen flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
-                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 15H19c0 4.418-3.582 8-8 8a8.001 8.001 0 01-7.746-6H3"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-4">營運流程與 SOP 建立</h3>
-                        <p class="text-slate-600 leading-relaxed text-sm">
-                            將零散經驗、重複任務與個人工作習慣，整理成可交接、可複製、可訓練的 SOP 與流程文件，降低團隊對個人救火的依賴。
-                        </p>
-                    </div>
-                    <div class="mt-8 pt-4 border-t border-stone-200/60 flex items-center justify-between text-xs font-semibold text-stone-400">
-                        <span>STANDARD OPERATION PROCESS</span>
-                        <span class="text-brandPurple group-hover:translate-x-1 transition-transform">→</span>
-                    </div>
-                </div>
+                    <p class="text-base text-slate-800 font-semibold leading-relaxed">
+                        我的核心價值，是協助企業把混難變清楚，把經驗變方法，把想法變成能被團隊執行的成果。
+                    </p>
 
-                <!-- Service Card 4 -->
-                <div class="p-8 rounded-[24px] glass-card border border-stone-200/50 hover:border-brandPurple/40 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between reveal">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-stone-100 text-brandBlue flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
-                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-4">PM 協作制度與專案治理</h3>
-                        <p class="text-slate-600 leading-relaxed text-sm">
-                            建立專案追蹤機制、溝通節點、驗收標準與跨部門協作規則，讓專案從混亂推進變成穩定交付。
-                        </p>
-                    </div>
-                    <div class="mt-8 pt-4 border-t border-stone-200/60 flex items-center justify-between text-xs font-semibold text-stone-400">
-                        <span>PROJECT GOVERNANCE & PMO</span>
-                        <span class="text-brandPurple group-hover:translate-x-1 transition-transform">→</span>
+                    <!-- Core Tags -->
+                    <div class="flex flex-wrap gap-2.5 pt-4">
+                        <span class="px-4 py-2 rounded-full bg-stone-100 text-brandBlue border border-stone-200/60 text-xs font-bold tracking-wider">
+                            把混亂變清楚
+                        </span>
+                        <span class="px-4 py-2 rounded-full bg-stone-100 text-brandPurple border border-stone-200/60 text-xs font-bold tracking-wider">
+                            把經驗變方法
+                        </span>
+                        <span class="px-4 py-2 rounded-full bg-stone-100 text-brandGreen border border-stone-200/60 text-xs font-bold tracking-wider">
+                            把想法變流程
+                        </span>
                     </div>
                 </div>
             </div>
@@ -424,10 +471,10 @@ SS<!DOCTYPE html>
     </section>
 
     <!-- AI Transformation Blueprint Section (Visual Timeline) -->
-    <section class="py-24 bg-white relative">
+    <section id="painpoints" class="py-24 bg-white relative">
         <div class="max-w-7xl mx-auto px-6">
             <div class="max-w-3xl mx-auto text-center mb-16 reveal">
-                <span class="text-xs font-bold tracking-widest text-brandBlue uppercase block mb-3">AI Transformation Scheme</span>
+                <span class="text-xs font-bold tracking-widest text-brandBlue uppercase block mb-3">AI 轉型藍圖</span>
                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">
                     AI 不是多一套工具，<br>而是重新整理團隊工作的方式。
                 </h2>
@@ -510,12 +557,101 @@ SS<!DOCTYPE html>
         </div>
     </section>
 
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-bgIce relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-amber-500/5 blur-[150px] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <!-- Header Group -->
+            <div class="max-w-3xl mx-auto text-center mb-16 reveal">
+                <span class="text-xs font-bold tracking-widest text-brandPurple uppercase block mb-3">服務方案</span>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">
+                    我協助你把 AI 變成真正用得起來的工作方法。
+                </h2>
+                <p class="text-base md:text-lg text-stone-600">
+                    不只提供工具，而是為你的團隊打造一套可控、可複製、能穩定交付成果的工作系統。
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Service Card 1 -->
+                <div class="p-8 rounded-[24px] glass-card border border-stone-200/50 hover:border-brandPurple/40 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between reveal">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-stone-100 text-brandBlue flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">需求釐清與網站架構規劃</h3>
+                        <p class="text-slate-600 leading-relaxed text-sm">
+                            把老闆、客戶與團隊腦中的想法，整理成清楚的頁面架構、功能規格、內容邏輯與執行路徑，降低反覆溝通與需求變動造成的專案耗損。
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-stone-200/60 flex items-center justify-between text-xs font-semibold text-stone-400">
+                        <span>架構與範圍定義</span>
+                        <span class="text-brandPurple group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="p-8 rounded-[24px] glass-card border border-stone-200/50 hover:border-brandPurple/40 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between reveal">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-amber-50/50 text-brandPurple flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">AI 工作流設計與導入</h3>
+                        <p class="text-slate-600 leading-relaxed text-sm">
+                            從團隊日常任務出發，設計真正用得起來的 AI 提示詞、文件模板、協作流程與知識管理方法，讓 AI 成為工作的一部分，而不是額外負擔。
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-stone-200/60 flex items-center justify-between text-xs font-semibold text-stone-400">
+                        <span>AI 能力啟動</span>
+                        <span class="text-brandPurple group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="p-8 rounded-[24px] glass-card border border-stone-200/50 hover:border-brandPurple/40 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between reveal">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-stone-100 text-brandGreen flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 15H19c0 4.418-3.582 8-8 8a8.001 8.001 0 01-7.746-6H3"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">營運流程與 SOP 建立</h3>
+                        <p class="text-slate-600 leading-relaxed text-sm">
+                            將零散經驗、重複任務與個人工作習慣，整理成可交接、可複製、可訓練的 SOP 與流程文件，降低團隊對個人救火的依賴。
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-stone-200/60 flex items-center justify-between text-xs font-semibold text-stone-400">
+                        <span>標準作業流程</span>
+                        <span class="text-brandPurple group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="p-8 rounded-[24px] glass-card border border-stone-200/50 hover:border-brandPurple/40 hover:shadow-xl transition-all duration-300 group flex flex-col justify-between reveal">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-stone-100 text-brandBlue flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">PM 協作制度與專案治理</h3>
+                        <p class="text-slate-600 leading-relaxed text-sm">
+                            建立專案追蹤機制、溝通節點、驗收標準與跨部門協作規則，讓專案從混亂推進變成穩定交付。
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-stone-200/60 flex items-center justify-between text-xs font-semibold text-stone-400">
+                        <span>專案治理與 PMO</span>
+                        <span class="text-brandPurple group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Methodology Section -->
     <section id="method" class="py-24 bg-bgLavender relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <!-- Header Group -->
             <div class="max-w-3xl mx-auto text-center mb-16 reveal">
-                <span class="text-xs font-bold tracking-widest text-brandBlue uppercase block mb-3">Consulting Methodology</span>
+                <span class="text-xs font-bold tracking-widest text-brandBlue uppercase block mb-3">顧問方法</span>
                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">
                     我的顧問方法：先整理，再導入，最後變成團隊習慣。
                 </h2>
@@ -535,7 +671,7 @@ SS<!DOCTYPE html>
                     <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:translate-y-0 w-8 h-8 rounded-full bg-white border-4 border-brandBlue shadow-sm z-20 flex items-center justify-center text-xs font-bold text-brandBlue"></div>
                     
                     <div class="w-full md:w-[45%] p-6 rounded-2xl bg-white border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
-                        <span class="text-xs font-semibold text-brandPurple uppercase tracking-widest block mb-2">Step 1</span>
+                        <span class="text-xs font-semibold text-brandPurple uppercase tracking-widest block mb-2">步驟 1</span>
                         <h3 class="text-lg font-bold text-slate-900 mb-2">釐清現況</h3>
                         <p class="text-sm text-stone-500 leading-relaxed">
                             訪談團隊與關鍵角色，盤點目前的工作流程、溝通方式、文件產出與專案卡點。
@@ -550,7 +686,7 @@ SS<!DOCTYPE html>
                     <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:translate-y-0 w-8 h-8 rounded-full bg-white border-4 border-brandPurple shadow-sm z-20 flex items-center justify-center text-xs font-bold text-brandPurple"></div>
                     
                     <div class="w-full md:w-[45%] p-6 rounded-2xl bg-white border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
-                        <span class="text-xs font-semibold text-brandPurple uppercase tracking-widest block mb-2">Step 2</span>
+                        <span class="text-xs font-semibold text-brandPurple uppercase tracking-widest block mb-2">步驟 2</span>
                         <h3 class="text-lg font-bold text-slate-900 mb-2">找出斷點</h3>
                         <p class="text-sm text-stone-500 leading-relaxed">
                             整理哪些任務重複發生、哪些資訊容易遺漏、哪些溝通容易失焦、哪些流程最適合先導入 AI。
@@ -565,7 +701,7 @@ SS<!DOCTYPE html>
                     <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:translate-y-0 w-8 h-8 rounded-full bg-white border-4 border-brandGreen shadow-sm z-20 flex items-center justify-center text-xs font-bold text-brandGreen"></div>
                     
                     <div class="w-full md:w-[45%] p-6 rounded-2xl bg-white border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
-                        <span class="text-xs font-semibold text-brandGreen uppercase tracking-widest block mb-2">Step 3</span>
+                        <span class="text-xs font-semibold text-brandGreen uppercase tracking-widest block mb-2">步驟 3</span>
                         <h3 class="text-lg font-bold text-slate-900 mb-2">設計方法</h3>
                         <p class="text-sm text-stone-500 leading-relaxed">
                             建立 AI 提示詞、文件模板、SOP、工作流程、專案追蹤表與協作規則。
@@ -580,7 +716,7 @@ SS<!DOCTYPE html>
                     <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:translate-y-0 w-8 h-8 rounded-full bg-white border-4 border-brandBlue shadow-sm z-20 flex items-center justify-center text-xs font-bold text-brandBlue"></div>
                     
                     <div class="w-full md:w-[45%] p-6 rounded-2xl bg-white border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
-                        <span class="text-xs font-semibold text-brandBlue uppercase tracking-widest block mb-2">Step 4</span>
+                        <span class="text-xs font-semibold text-brandBlue uppercase tracking-widest block mb-2">步驟 4</span>
                         <h3 class="text-lg font-bold text-slate-900 mb-2">陪伴落地</h3>
                         <p class="text-sm text-stone-500 leading-relaxed">
                             透過教育訓練、範例演練與實際任務導入，讓團隊知道怎麼用，也知道什麼時候不該用。
@@ -595,64 +731,13 @@ SS<!DOCTYPE html>
                     <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:translate-y-0 w-8 h-8 rounded-full bg-white border-4 border-brandPurple shadow-sm z-20 flex items-center justify-center text-xs font-bold text-brandPurple"></div>
                     
                     <div class="w-full md:w-[45%] p-6 rounded-2xl bg-white border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
-                        <span class="text-xs font-semibold text-brandPurple uppercase tracking-widest block mb-2">Step 5</span>
+                        <span class="text-xs font-semibold text-brandPurple uppercase tracking-widest block mb-2">步驟 5</span>
                         <h3 class="text-lg font-bold text-slate-900 mb-2">持續優化</h3>
                         <p class="text-sm text-stone-500 leading-relaxed">
                             根據團隊使用狀況調整流程與模板，讓 AI 工作流逐漸成為日常，而不是一時的新工具熱潮。
                         </p>
                     </div>
                     <div class="hidden md:block w-[45%]"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Sharon Section -->
-    <section id="about" class="py-24 bg-white relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <!-- Left Graphic (Professional Portrait) -->
-                <div class="lg:col-span-5 flex justify-center reveal">
-                    <div class="relative w-full max-w-[420px] aspect-[4/5] rounded-[32px] overflow-hidden bg-slate-950/5 shadow-2xl border border-white/15">
-                        <img src="sharon_pic.jpg" alt="Sharon Portrait" class="h-full w-full object-cover object-center" />
-                        <div class="absolute inset-x-0 bottom-0 bg-slate-950/70 backdrop-blur-md px-6 py-4">
-                            <p class="text-sm font-semibold text-white">Sharon</p>
-                            <p class="text-xs text-slate-300 mt-1">數位專案顧問 · AI & Process Architecture</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Copywriting Info -->
-                <div class="lg:col-span-7 flex flex-col space-y-6 reveal">
-                    <span class="text-xs font-bold tracking-widest text-brandPurple uppercase block">About the Consultant</span>
-                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 leading-snug">
-                        我不是只導入 AI，<br>而是協助團隊重新看懂自己的工作方式。
-                    </h2>
-                    
-                    <p class="text-base text-slate-600 leading-relaxed">
-                        我是 Sharon，一位結合網站專案管理、營運流程設計與 AI 工具應用的數位專案顧問。過去十多年，我長期協助企業釐清需求、規劃網站架構、管理跨部門專案，並將模糊的想法整理成可執行的流程與文件。
-                    </p>
-                    
-                    <p class="text-base text-slate-600 leading-relaxed">
-                        我擅長站在老闆、客戶、PM、設計、工程與營運之間，協助不同角色對齊目標、拆解任務、建立溝通機制。近年我將 AI 工具導入專案管理與營運流程中，協助團隊建立提示詞模板、文件產製流程、知識管理方法與 SOP，讓 AI 不只是提高效率的工具，而是能真正融入團隊日常的工作方法。
-                    </p>
-
-                    <p class="text-base text-slate-800 font-semibold leading-relaxed">
-                        我的核心價值，是協助企業把混難變清楚，把經驗變方法，把想法變成能被團隊執行的成果。
-                    </p>
-
-                    <!-- Core Tags -->
-                    <div class="flex flex-wrap gap-2.5 pt-4">
-                        <span class="px-4 py-2 rounded-full bg-stone-100 text-brandBlue border border-stone-200/60 text-xs font-bold tracking-wider">
-                            把混亂變清楚
-                        </span>
-                        <span class="px-4 py-2 rounded-full bg-stone-100 text-brandPurple border border-stone-200/60 text-xs font-bold tracking-wider">
-                            把經驗變方法
-                        </span>
-                        <span class="px-4 py-2 rounded-full bg-stone-100 text-brandGreen border border-stone-200/60 text-xs font-bold tracking-wider">
-                            把想法變流程
-                        </span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -666,7 +751,7 @@ SS<!DOCTYPE html>
         </div>
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="max-w-3xl mx-auto text-center mb-12 reveal">
-                <span class="text-xs font-bold tracking-widest text-brandPurple uppercase block mb-3">Core Solution</span>
+                <span class="text-xs font-bold tracking-widest text-brandPurple uppercase block mb-3">核心方案</span>
                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">核心產品與技術解決方案</h2>
                 <p class="text-base md:text-lg text-stone-500 max-w-2xl mx-auto">
                     透過核心方法與 AI 工作流解決方案，協助企業釐清問題、整合流程、提升效率，並讓技術真正落地到日常工作中。本方案針對需要把 AI 工具轉化為可執行流程、減少跨部門協作摩擦、以及建立長效運作模式的團隊而設計。
@@ -711,12 +796,6 @@ SS<!DOCTYPE html>
                 </article>
             </div>
 
-            <div class="mt-10 flex justify-center">
-                <a href="{這裡放上您的網頁連結}" target="_blank" rel="noopener noreferrer" class="group solution-cta inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white/90 px-8 py-4 text-sm font-semibold text-slate-900 shadow-sm hover:border-transparent hover:bg-white hover:text-slate-950">
-                    查看完整方案內容
-                    <svg class="w-4 h-4 ml-2 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-                </a>
-            </div>
         </div>
     </section>
 
@@ -725,7 +804,7 @@ SS<!DOCTYPE html>
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <!-- Header Group -->
             <div class="max-w-3xl mx-auto text-center mb-16 reveal">
-                <span class="text-xs font-bold tracking-widest text-brandGreen uppercase block mb-3">Case Studies & Outcomes</span>
+                <span class="text-xs font-bold tracking-widest text-brandGreen uppercase block mb-3">案例成果</span>
                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">
                     我關心的不是做了什麼，<br>而是混亂如何變清楚。
                 </h2>
@@ -740,7 +819,7 @@ SS<!DOCTYPE html>
                 <div class="bg-white rounded-[24px] border border-stone-200/60 hover:border-brandPurple/40 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between reveal">
                     <div class="p-8 space-y-6">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Case Study 01</span>
+                            <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">案例 01</span>
                             <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-stone-100 text-brandBlue">專案規劃</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900">網站需求從模糊到可執行</h3>
@@ -776,7 +855,7 @@ SS<!DOCTYPE html>
                 <div class="bg-white rounded-[24px] border border-stone-200/60 hover:border-brandPurple/40 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between reveal">
                     <div class="p-8 space-y-6">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Case Study 02</span>
+                            <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">案例 02</span>
                             <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-brandPurple">營運流程</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900">PM 經驗從個人能力變成團隊方法</h3>
@@ -812,7 +891,7 @@ SS<!DOCTYPE html>
                 <div class="bg-white rounded-[24px] border border-stone-200/60 hover:border-brandGreen/40 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between reveal">
                     <div class="p-8 space-y-6">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Case Study 03</span>
+                            <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">案例 03</span>
                             <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-stone-100 text-brandGreen">AI 落地</span>
                         </div>
                         <h3 class="text-lg font-bold text-slate-900">AI 工具從嘗試使用變成日常工作流</h3>
@@ -847,13 +926,13 @@ SS<!DOCTYPE html>
         </div>
     </section>
 
-    <!-- External Dependencies & Contact Form Section -->
-    <section class="py-20 bg-bgWarm relative overflow-hidden">
+    <!-- Contact / Inquiry Section -->
+    <section id="contact" class="py-20 bg-bgWarm relative overflow-hidden">
         <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-slate-100/80 to-transparent pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="grid gap-8 lg:grid-cols-2 items-stretch">
                 <div class="rounded-[32px] glass-card border border-stone-200/60 bg-white/85 p-8 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.1)] h-full">
-                    <span class="text-xs font-bold tracking-widest text-brandBlue uppercase">About Me</span>
+                    <span class="text-xs font-bold tracking-widest text-brandBlue uppercase">關於我</span>
                     <h2 class="mt-4 text-3xl md:text-4xl font-bold text-slate-900">關於我</h2>
                     <p class="mt-4 max-w-2xl text-sm leading-relaxed text-slate-600">這裡是我的社群與專業連結入口，一站式呈現 Sharon 的工作網絡與合作資源，讓你更快速找到適合的協作通路。</p>
 
@@ -875,7 +954,7 @@ SS<!DOCTYPE html>
                                     <path d="M12 0.5C5.649 0.5 0.5 5.65 0.5 12C0.5 17.054 3.737 21.313 8.207 22.79C8.775 22.885 9.018 22.552 9.018 22.262C9.018 22.003 9.008 21.236 9.003 20.18C5.68 20.713 4.968 18.622 4.968 18.622C4.437 17.218 3.676 16.81 3.676 16.81C2.637 16.061 3.739 16.078 3.739 16.078C4.869 16.16 5.424 17.24 5.424 17.24C6.425 18.951 8.049 18.44 8.672 18.156C8.764 17.403 9.042 16.903 9.354 16.631C6.789 16.357 4.123 15.34 4.123 10.846C4.123 9.6 4.58 8.587 5.307 7.803C5.19 7.528 4.817 6.363 5.422 4.901C5.422 4.901 6.388 4.61 8.999 6.176C9.91 5.944 10.888 5.833 11.866 5.828C12.844 5.833 13.822 5.944 14.734 6.176C17.344 4.61 18.309 4.901 18.309 4.901C18.915 6.363 18.541 7.528 18.424 7.803C19.155 8.587 19.608 9.6 19.608 10.846C19.608 15.353 16.936 16.354 14.364 16.622C14.789 16.977 15.168 17.697 15.168 18.798C15.168 20.37 15.155 21.597 15.155 22.262C15.155 22.556 15.393 22.892 15.968 22.79C20.431 21.313 23.663 17.056 23.663 12C23.663 5.65 18.514 0.5 12 0.5Z"/>
                                 </svg>
                             </div>
-                            <span class="text-xs font-semibold text-slate-700">GitHub</span>
+                            <span class="text-xs font-semibold text-slate-700">GitHub 個人頁</span>
                         </a>
                         <a href="https://www.facebook.com/chengyee.kwan" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center justify-center gap-3 rounded-3xl border border-slate-200 bg-slate-50/90 p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/50 hover:shadow-lg">
                             <div class="flex h-14 w-14 items-center justify-center rounded-3xl bg-sky-100 text-sky-700 shadow-sm">
@@ -883,7 +962,7 @@ SS<!DOCTYPE html>
                                     <path d="M22 12C22 6.477 17.523 2 12 2S2 6.477 2 12C2 17.022 5.656 21.128 10.438 21.878V14.89H7.898V12H10.438V9.797C10.438 7.298 11.93 5.938 14.205 5.938C15.27 5.938 16.383 6.141 16.383 6.141V8.602H15.032C13.703 8.602 13.313 9.394 13.313 10.205V12H16.266L15.77 14.89H13.313V21.878C18.094 21.128 22 17.022 22 12Z"/>
                                 </svg>
                             </div>
-                            <span class="text-xs font-semibold text-slate-700">Facebook</span>
+                            <span class="text-xs font-semibold text-slate-700">Facebook 粉專</span>
                         </a>
                         <a href="https://www.linkedin.com/in/sharon-kwan-b525176b/" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center justify-center gap-3 rounded-3xl border border-slate-200 bg-slate-50/90 p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brandPurple/50 hover:shadow-lg">
                             <div class="flex h-14 w-14 items-center justify-center rounded-3xl bg-gradient-to-br from-brandPurple/10 to-brandBlue/10 text-brandBlue shadow-sm">
@@ -891,7 +970,7 @@ SS<!DOCTYPE html>
                                     <path d="M20.447 20.452H16.9V14.79C16.9 13.471 16.875 11.825 15.078 11.825C13.258 11.825 12.999 13.195 12.999 14.699V20.452H9.451V9H12.82V10.561H12.867C13.333 9.743 14.48 8.878 16.054 8.878C19.453 8.878 20.447 11.15 20.447 14.04V20.452ZM5.337 7.433C4.22 7.433 3.31 6.521 3.31 5.404C3.31 4.287 4.22 3.375 5.337 3.375C6.454 3.375 7.366 4.287 7.366 5.404C7.366 6.521 6.454 7.433 5.337 7.433ZM7.119 20.452H3.551V9H7.119V20.452ZM22.225 0H1.771C0.792 0 0 0.77 0 1.722V22.277C0 23.229 0.792 24 1.771 24H22.223C23.205 24 24 23.229 24 22.277V1.722C24 0.77 23.205 0 22.225 0Z"/>
                                 </svg>
                             </div>
-                            <span class="text-xs font-semibold text-slate-700">LinkedIn</span>
+                            <span class="text-xs font-semibold text-slate-700">LinkedIn 職場頁</span>
                         </a>
                     </div>
                 </div>
@@ -921,7 +1000,7 @@ SS<!DOCTYPE html>
         <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
             <!-- Glassmorphism Container -->
             <div class="p-8 md:p-16 rounded-[32px] glass-card border border-white/60 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.02)] space-y-8 reveal">
-                <span class="text-xs font-bold tracking-widest text-brandPurple uppercase block">Ready to start?</span>
+                <span class="text-xs font-bold tracking-widest text-brandPurple uppercase block">準備好開始了嗎？</span>
                 
                 <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 leading-[1.15] max-w-3xl mx-auto">
                     你的團隊不是不努力，<br class="sm:hidden">只是需要一套更清楚的工作方法。
@@ -938,7 +1017,7 @@ SS<!DOCTYPE html>
                         <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         
                         <!-- Mini status absolute container inside button hover -->
-                        <span class="absolute bottom-1 right-2 text-[8px] text-brandGreen font-bold tracking-wider uppercase scale-75 opacity-0 group-hover:opacity-100 transition-opacity">Clarify Now</span>
+                        <span class="absolute bottom-1 right-2 text-[8px] text-brandGreen font-bold tracking-wider uppercase scale-75 opacity-0 group-hover:opacity-100 transition-opacity">立即釐清</span>
                     </a>
                     
                     <p class="text-xs text-slate-400 font-medium">預約完成後，我們將進行 30 分鐘的線上探索訪談</p>
@@ -962,29 +1041,30 @@ SS<!DOCTYPE html>
                 <!-- Right Foot Pillars (Minimalist lists) -->
                 <div class="md:col-span-6 grid grid-cols-2 gap-8">
                     <div>
-                        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Core Focus</h4>
+                        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">核心專注</h4>
                         <ul class="space-y-2 text-xs text-stone-500">
-                            <li>AI Workflow Consultant</li>
-                            <li>Project Management Intelligence</li>
-                            <li>Human-centered Workflow Design</li>
-                            <li>Practical AI Transformation</li>
+                            <li>AI 工作流顧問</li>
+                            <li>專案管理洞察</li>
+                            <li>以人為本的流程設計</li>
+                            <li>實務 AI 轉型</li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Quick Link</h4>
+                        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">快速連結</h4>
                         <ul class="space-y-2 text-xs text-stone-500">
                             <li><a href="#about" class="hover:text-white transition-colors">關於 Sharon</a></li>
-                            <li><a href="#services" class="hover:text-white transition-colors">AI 工作流方案</a></li>
+                            <li><a href="#services" class="hover:text-white transition-colors">服務方案</a></li>
                             <li><a href="#method" class="hover:text-white transition-colors">顧問方法</a></li>
-                            <li><a href="#cases" class="hover:text-white transition-colors">合作案例</a></li>
+                            <li><a href="#cases" class="hover:text-white transition-colors">案例成果</a></li>
+                            <li><a href="#contact" class="hover:text-white transition-colors">聯絡我</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
 
             <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-600">
-                <span>© 2026 Sharon. All Rights Reserved.</span>
-                <span class="tracking-wide">From Chaos to Clarity, with AI.</span>
+                <span>© 2026 Sharon. 版權所有。</span>
+                <span class="tracking-wide">從混亂到清晰，AI 伴您前行。</span>
             </div>
         </div>
     </footer>
